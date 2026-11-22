@@ -1,0 +1,1664 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&display=swap');
+
+/* ==========================================
+   COLORES GENERALES
+========================================== */
+
+:root {
+    --burgundy: #5b1025;
+    --burgundy-light: #801e38;
+    --gold: #c5a45b;
+    --gold-light: #e6ce91;
+    --black: #100b0d;
+    --cream: #f0e5cc;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Times New Roman", serif;
+    background:
+        radial-gradient(ellipse at top, #32131f 0%, transparent 60%),
+        var(--black);
+    color: var(--cream);
+}
+
+#app {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+#home {
+    width: 100%;
+}
+
+/* ==========================================
+   PANTALLAS INICIALES
+========================================== */
+
+.home-screen {
+    width: 100%;
+    max-width: 760px;
+    margin: auto;
+    padding: 55px 25px;
+    text-align: center;
+    border: 1px solid rgba(197, 164, 91, 0.65);
+    background: rgba(16, 11, 13, 0.82);
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.5);
+    animation: appear 0.8s ease both;
+}
+
+.home-screen h1 {
+    color: var(--gold-light);
+    font-family: "Cinzel", "Times New Roman", serif;
+    font-size: clamp(34px, 6vw, 58px);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 15px 0 22px;
+    text-shadow: 0 0 20px rgba(197, 164, 91, 0.3);
+}
+
+.home-screen h3 {
+    color: var(--gold);
+    margin: 25px 0 12px;
+    font-size: 22px;
+}
+
+.home-screen p {
+    color: #d8cbb9;
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 12px !important;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.ornament {
+    color: var(--gold);
+    font-size: 23px;
+    letter-spacing: 12px;
+}
+
+.bottom-ornament {
+    margin-top: 35px;
+}
+
+/* ==========================================
+   BOTONES MÁGICOS
+========================================== */
+
+button {
+    font-family: "Times New Roman", serif;
+}
+
+.magic-button,
+.secondary-button {
+    position: relative;
+    overflow: hidden;
+    margin: 10px 6px;
+    padding: 14px 34px;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    background: linear-gradient(135deg, #651329, #3b0b19);
+    color: var(--gold-light);
+    font-size: 19px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.magic-button::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -80%;
+    width: 45%;
+    height: 200%;
+    transform: rotate(25deg);
+    background: rgba(255, 255, 255, 0.18);
+    transition: left 0.5s ease;
+}
+
+.magic-button:hover::before {
+    left: 140%;
+}
+
+.magic-button:hover,
+.secondary-button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 12px rgba(197, 164, 91, 0.4),
+        0 0 28px rgba(128, 30, 56, 0.45);
+}
+
+.magic-button:active,
+.secondary-button:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 20px var(--gold);
+}
+
+.secondary-button {
+    background: transparent;
+    color: var(--gold);
+}
+
+/* ==========================================
+   PANTALLA DE ANÁLISIS
+========================================== */
+
+.analysis-screen {
+    position: relative;
+    width: 100%;
+    min-height: 680px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid var(--gold);
+    background:
+        radial-gradient(ellipse at center, #42182a 0%, #160d12 60%, #100b0d 100%);
+}
+
+/* Brillo ambiental */
+
+.analysis-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(197, 164, 91, 0.12),
+            transparent 45%);
+    pointer-events: none;
+}
+
+/* ==========================================
+   SOMBRERO DE FONDO
+========================================== */
+
+.analysis-hat-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0.72;
+}
+
+.sorting-hat-art {
+    display: block;
+    width: clamp(380px, 58vw, 650px);
+    height: auto;
+    overflow: visible;
+    filter:
+        drop-shadow(0 0 25px rgba(197, 164, 91, 0.25))
+        brightness(0.82);
+    transform-origin: 50% 80%;
+    animation: sorting-hat-movement 4s ease-in-out infinite;
+}
+
+@keyframes sorting-hat-movement {
+    0%, 100% {
+        transform: rotate(-3deg) translateY(0) scale(1);
+    }
+
+    25% {
+        transform: rotate(3deg) translateY(-9px) scale(1.015);
+    }
+
+    50% {
+        transform: rotate(-2deg) translateY(0) scale(1);
+    }
+
+    75% {
+        transform: rotate(2deg) translateY(-6px) scale(1.01);
+    }
+}
+
+/* ==========================================
+   ARTISTAS FLOTANDO
+========================================== */
+
+.floating-artist-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.floating-artist {
+    position: absolute;
+    width: clamp(52px, 7vw, 88px);
+    height: clamp(52px, 7vw, 88px);
+    object-fit: cover;
+    border: 2px solid rgba(230, 206, 145, 0.9);
+    border-radius: 50%;
+    opacity: 1;
+    box-shadow:
+        0 0 15px rgba(197, 164, 91, 0.32),
+        0 0 30px rgba(0, 0, 0, 0.5);
+    animation: artist-float 5s ease-in-out infinite;
+    animation-delay: calc(var(--artist-index) * -0.35s);
+    transition:
+        opacity 0.5s ease,
+        filter 0.5s ease;
+}
+
+@keyframes artist-float {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-18px) rotate(5deg);
+    }
+}
+
+/* ==========================================
+   TEXTO CENTRAL DEL ANÁLISIS
+========================================== */
+
+.analysis-content {
+    position: relative;
+    z-index: 4;
+    width: min(90%, 650px);
+    padding: 45px 25px;
+    text-align: center;
+    background:
+        radial-gradient(ellipse,
+            rgba(16, 11, 13, 0.88) 0%,
+            rgba(16, 11, 13, 0.65) 60%,
+            transparent 100%);
+}
+
+.analysis-content h1 {
+    color: var(--gold-light);
+    font-family: "Cinzel", "Times New Roman", serif;
+    font-size: clamp(30px, 5vw, 48px);
+    margin: 18px 0;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.analysis-content p {
+    color: #e5d7c2;
+    font-size: 18px;
+    line-height: 1.6;
+    text-shadow: 0 2px 8px #000;
+}
+
+.analysis-content .eyebrow {
+    color: var(--gold-light);
+}
+
+/* Mensaje del sombrero */
+
+.hat-message-container {
+    max-width: 540px;
+    min-height: 76px;
+    margin: 15px auto 20px;
+    padding: 15px 20px;
+    border-top: 1px solid rgba(197, 164, 91, 0.45);
+    border-bottom: 1px solid rgba(197, 164, 91, 0.45);
+}
+
+#hat-message {
+    color: #f0e5cc;
+    font-size: clamp(16px, 2vw, 20px);
+    font-style: italic;
+    line-height: 1.6;
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+#hat-message.message-changing {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+#analysis-progress {
+    color: var(--gold);
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/* Barra de análisis */
+
+.analysis-line {
+    width: 75%;
+    height: 5px;
+    margin: 28px auto 0;
+    overflow: hidden;
+    background: rgba(197, 164, 91, 0.2);
+}
+
+.analysis-line span {
+    display: block;
+    width: 35%;
+    height: 100%;
+    background: var(--gold);
+    box-shadow: 0 0 12px var(--gold);
+    animation: loading-line 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-line {
+    from {
+        transform: translateX(-120%);
+    }
+
+    to {
+        transform: translateX(350%);
+    }
+}
+
+/* ==========================================
+   TRANSICIÓN: SOMBRERO Y ARTISTAS SUBEN
+========================================== */
+
+.analysis-screen.analysis-ending .analysis-content {
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.analysis-screen.analysis-ending .analysis-content {
+    opacity: 0.7;
+}
+
+.analysis-screen.elements-rising .analysis-hat-background,
+.analysis-screen.elements-rising .floating-artist-layer {
+    animation: rise-away 1.35s cubic-bezier(.65, 0, .35, 1) forwards;
+}
+
+.analysis-screen.elements-rising .analysis-content {
+    animation: text-rise-away 1.1s ease forwards;
+}
+
+@keyframes rise-away {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-115vh);
+        opacity: 0;
+    }
+}
+
+@keyframes text-rise-away {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-70vh);
+        opacity: 0;
+    }
+}
+
+/* ==========================================
+   RESULTADOS
+========================================== */
+
+.sorting-result {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 38px 32px;
+    overflow: hidden;
+    background: var(--house-bg);
+    border: 1px solid var(--house-accent);
+    color: #f0e5cc;
+    font-family: "Times New Roman", serif;
+    animation: appear 0.8s ease both;
+}
+
+.sorting-result * {
+    box-sizing: border-box;
+}
+
+.sorting-result::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at top,
+            color-mix(in srgb, var(--house-one), transparent 65%),
+            transparent 65%);
+    opacity: 0.7;
+}
+
+.result-reveal {
+    animation: result-rise-in 1.1s cubic-bezier(.2, .75, .25, 1) both;
+}
+
+@keyframes result-rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(75px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-heading {
+    position: relative;
+    z-index: 2;
+    color: var(--house-accent);
+    font-size: 15px;
+    letter-spacing: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+.result-heading span {
+    padding: 0 10px;
+}
+
+/* ==========================================
+   CASA GANADORA
+========================================== */
+
+.winner-section {
+    position: relative;
+    z-index: 1;
+    min-height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.winner-watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(180px, 30vw, 310px);
+    opacity: 0.09;
+    filter: grayscale(1);
+    pointer-events: none;
+    user-select: none;
+}
+
+.winner-label {
+    position: relative;
+    z-index: 1;
+    color: var(--house-accent);
+    font-size: 14px;
+    letter-spacing: 7px;
+    margin-bottom: 12px;
+}
+
+.winner-name {
+    position: relative;
+    z-index: 1;
+    color: var(--house-accent);
+    font-family: "Cinzel", "Times New Roman", serif;
+    font-size: clamp(42px, 8vw, 82px);
+    font-weight: 700;
+    letter-spacing: 4px;
+    line-height: 1.15;
+    text-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+.winner-percentage {
+    position: relative;
+    z-index: 1;
+    margin-top: 10px;
+    color: #fff0d0;
+    font-size: clamp(40px, 7vw, 68px);
+    font-weight: bold;
+}
+
+.winner-bar {
+    position: relative;
+    z-index: 1;
+    width: min(75%, 540px);
+    height: 9px;
+    margin: 20px auto 15px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.winner-bar-fill {
+    width: var(--winner-width);
+    height: 100%;
+    background: var(--house-accent);
+    box-shadow: 0 0 15px var(--house-accent);
+    animation: winner-bar-grow 1.5s ease both;
+    transform-origin: left;
+}
+
+@keyframes winner-bar-grow {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: var(--winner-width);
+    }
+}
+
+.winner-caption {
+    position: relative;
+    z-index: 1;
+    color: var(--house-accent);
+    font-size: 11px;
+    letter-spacing: 5px;
+}
+
+/* ==========================================
+   RESTO DE LAS CASAS
+========================================== */
+
+.other-houses-section {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 45px auto 55px;
+}
+
+.other-houses-title {
+    color: var(--house-accent);
+    font-family: "Cinzel", "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.other-house {
+    margin: 22px 0;
+}
+
+.other-house-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 9px;
+    color: #f0e5cc;
+    font-size: 19px;
+}
+
+.other-house-heading strong {
+    color: var(--house-accent);
+    font-size: 20px;
+}
+
+.house-bar {
+    width: 100%;
+    height: 7px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.house-bar-fill {
+    height: 100%;
+    animation: house-bar-grow 1.2s ease both;
+    transform-origin: left;
+}
+
+@keyframes house-bar-grow {
+    from {
+        width: 0;
+    }
+}
+
+/* ==========================================
+   SECCIONES MUSICALES
+========================================== */
+
+.music-details {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+    width: 100%;
+}
+
+.ranking-section {
+    width: 100%;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ranking-title {
+    color: var(--house-accent);
+    font-family: "Cinzel", "Times New Roman", serif;
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* ==========================================
+   PRIMER PUESTO
+========================================== */
+
+.ranking-feature {
+    display: grid;
+    grid-template-columns: 38px 130px 1fr;
+    align-items: center;
+    gap: 22px;
+    width: 100%;
+    min-height: 145px;
+    padding: 18px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.17);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ranking-feature-number {
+    color: var(--house-accent);
+    font-family: "Cinzel", serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.ranking-feature-image,
+.ranking-feature-symbol {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border: 1px solid var(--house-accent);
+}
+
+.ranking-feature-symbol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--house-accent);
+    font-size: 48px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.ranking-feature-info {
+    min-width: 0;
+}
+
+.ranking-first-label {
+    display: block;
+    color: var(--house-accent);
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.ranking-feature-info h3 {
+    color: #fff0d0;
+    font-family: "Cinzel", "Times New Roman", serif;
+    font-size: clamp(20px, 3vw, 30px);
+    overflow-wrap: anywhere;
+}
+
+.ranking-feature-info p {
+    color: rgba(240, 229, 204, 0.7);
+    font-size: 15px;
+    margin-top: 7px;
+}
+
+/* ==========================================
+   RESTO DEL TOP 10
+========================================== */
+
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.ranking-row {
+    display: grid;
+    grid-template-columns: 42px 52px minmax(0, 1fr) 20px;
+    align-items: center;
+    gap: 15px;
+    min-height: 75px;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.ranking-row:hover {
+    background: rgba(255, 255, 255, 0.055);
+    transform: translateX(5px);
+}
+
+.ranking-number {
+    color: var(--house-accent);
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.ranking-row-image {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ranking-row-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 4px;
+}
+
+.ranking-row-name {
+    color: #f0e5cc;
+    font-size: 17px;
+    overflow-wrap: anywhere;
+}
+
+.ranking-row-detail {
+    color: rgba(240, 229, 204, 0.58);
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.ranking-star {
+    color: var(--house-accent);
+    font-size: 18px;
+}
+
+/* ==========================================
+   ICONOS DE GÉNEROS
+========================================== */
+
+.genre-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 35% 30%,
+            color-mix(in srgb, var(--house-accent), transparent 70%),
+            rgba(0, 0, 0, 0.45));
+    border: 1px solid var(--house-accent);
+    color: var(--house-accent);
+    font-family: "Times New Roman", serif;
+    font-size: 30px;
+}
+
+.ranking-feature-symbol.genre-icon {
+    font-size: 62px;
+}
+
+.ranking-row-image.genre-icon {
+    font-size: 25px;
+}
+
+/* ==========================================
+   MENSAJES VACÍOS Y EXPLICACIÓN
+========================================== */
+
+.ranking-empty {
+    color: rgba(240, 229, 204, 0.6);
+    font-size: 16px;
+    padding: 15px 0;
+}
+
+.result-explanation {
+    margin-top: 10px;
+    padding: 20px;
+    border-left: 2px solid var(--house-accent);
+    background: rgba(0, 0, 0, 0.16);
+}
+
+.result-explanation p {
+    color: rgba(240, 229, 204, 0.68);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+.result-explanation p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================
+   BOTÓN DE RESULTADOS
+========================================== */
+
+.result-button {
+    display: block;
+    margin: 45px auto 10px;
+}
+
+/* ==========================================
+   CONFETI
+========================================== */
+
+.result-confetti {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 9px;
+    height: 16px;
+    opacity: 0;
+    animation: confetti-fall 3s ease-in forwards;
+}
+
+@keyframes confetti-fall {
+    0% {
+        opacity: 1;
+        transform: translateY(-20px) rotate(0deg);
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+/* ==========================================
+   ANIMACIONES GENERALES
+========================================== */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 700px) {
+    #app {
+        padding: 12px;
+    }
+
+    .analysis-screen {
+        min-height: 650px;
+    }
+
+    .analysis-content {
+        width: 94%;
+        padding: 35px 12px;
+    }
+
+    .analysis-hat-background {
+        opacity: 0.48;
+    }
+
+    .sorting-hat-art {
+        width: 115vw;
+        max-width: 560px;
+    }
+
+    .floating-artist {
+        width: 52px;
+        height: 52px;
+    }
+
+    .analysis-content h1 {
+        font-size: 30px;
+    }
+
+    .hat-message-container {
+        padding: 12px;
+    }
+
+    .sorting-result {
+        padding: 28px 16px;
+    }
+
+    .result-heading {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .winner-section {
+        min-height: 280px;
+        padding: 35px 10px;
+    }
+
+    .winner-name {
+        font-size: clamp(34px, 10vw, 55px);
+        letter-spacing: 2px;
+    }
+
+    .winner-bar {
+        width: 90%;
+    }
+
+    .ranking-feature {
+        grid-template-columns: 28px 90px 1fr;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .ranking-feature-image,
+    .ranking-feature-symbol {
+        width: 90px;
+        height: 90px;
+    }
+
+    .ranking-feature-symbol.genre-icon {
+        font-size: 45px;
+    }
+
+    .ranking-feature-info h3 {
+        font-size: 19px;
+    }
+
+    .ranking-first-label {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .ranking-row {
+        grid-template-columns: 30px 44px minmax(0, 1fr) 15px;
+        gap: 9px;
+        padding: 9px 5px;
+    }
+
+    .ranking-row-image {
+        width: 44px;
+        height: 44px;
+    }
+
+    .ranking-row-name {
+        font-size: 15px;
+    }
+
+    .ranking-row-detail {
+        font-size: 12px;
+    }
+
+    .ranking-title {
+        font-size: 19px;
+    }
+
+    .other-houses-title {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 420px) {
+    .floating-artist {
+        width: 43px;
+        height: 43px;
+    }
+
+    .analysis-screen {
+        min-height: 600px;
+    }
+
+    .analysis-content h1 {
+        font-size: 25px;
+    }
+
+    .analysis-content p {
+        font-size: 15px;
+    }
+
+    .ranking-feature {
+        grid-template-columns: 24px 75px 1fr;
+        gap: 9px;
+    }
+
+    .ranking-feature-image,
+    .ranking-feature-symbol {
+        width: 75px;
+        height: 75px;
+    }
+
+    .ranking-feature-info h3 {
+        font-size: 16px;
+    }
+}
+
+/* ==========================================
+   ACCESIBILIDAD
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================
+   RANKINGS: VER MÁS
+========================================== */
+
+.ranking-row-hidden {
+    display: none;
+}
+
+.ranking-show-more {
+    display: block;
+    margin: 18px auto 0;
+    padding: 9px 24px;
+    border: 1px solid var(--house-accent, #c5a45b);
+    border-radius: 3px;
+    background: transparent;
+    color: var(--house-accent, #c5a45b);
+    font-family: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.ranking-show-more:hover {
+    background: var(--house-accent, #c5a45b);
+    color: #100b0d;
+}
+
+/* ==========================================
+   ESCUDO DE LA CASA GANADORA
+========================================== */
+
+.winner-crest-layout {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+.winner-crest {
+    width: 155px;
+    height: 185px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 14px rgba(0, 0, 0, 0.5));
+}
+
+.winner-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ==========================================
+   RANKINGS EN DOS COLUMNAS
+========================================== */
+
+.music-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 45px 30px;
+}
+
+.music-details .result-explanation {
+    grid-column: 1 / -1;
+}
+
+/* ==========================================
+   ADAPTACIÓN A CELULARES
+========================================== */
+
+@media (max-width: 700px) {
+    .music-details {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .music-details .result-explanation {
+        grid-column: auto;
+    }
+
+    .winner-crest-layout {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .winner-crest {
+        width: 115px;
+        height: 135px;
+    }
+}
+/* ==========================================
+   ESCUDOS DE LAS CASAS
+========================================== */
+
+.house-crest {
+    display: block;
+    flex-shrink: 0;
+    filter: drop-shadow(0 5px 9px rgba(0, 0, 0, 0.55));
+}
+
+.house-crest-large {
+    width: 170px;
+    height: 200px;
+}
+
+.house-crest-small {
+    width: 52px;
+    height: 62px;
+}
+
+.winner-crest-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+}
+
+.other-house-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ==========================================
+   TRES COLUMNAS DE RANKINGS
+========================================== */
+
+.music-details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.music-details .result-explanation {
+    grid-column: 1 / -1;
+}
+
+/* ==========================================
+   ARTISTAS FLOTANTES
+========================================== */
+
+.floating-artist {
+    opacity: 1;
+}
+
+/* ==========================================
+   CELULARES
+========================================== */
+
+@media (max-width: 750px) {
+    .music-details {
+        grid-template-columns: 1fr;
+    }
+
+    .music-details .result-explanation {
+        grid-column: auto;
+    }
+
+    .winner-crest-layout {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .house-crest-large {
+        width: 125px;
+        height: 150px;
+    }
+
+    .house-crest-small {
+        width: 38px;
+        height: 46px;
+    }
+}
+
+/* ==========================================
+   CORRECCIÓN DE LOS RANKINGS
+========================================== */
+
+.music-details {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+    align-items: start;
+    width: 100%;
+}
+
+.ranking-section {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.ranking-title {
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    text-align: center;
+    white-space: nowrap;
+    margin-bottom: 25px;
+}
+
+/* Primer puesto */
+
+.ranking-feature {
+    display: grid !important;
+    grid-template-columns: 25px 90px minmax(0, 1fr) !important;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    min-height: 145px;
+    padding: 16px 12px;
+    box-sizing: border-box;
+}
+
+.ranking-feature-number {
+    grid-column: 1;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.ranking-feature-image,
+.ranking-feature-symbol {
+    grid-column: 2;
+    width: 90px !important;
+    height: 90px !important;
+    min-width: 0;
+    object-fit: cover;
+    box-sizing: border-box;
+}
+
+.ranking-feature-symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+.ranking-feature-info {
+    grid-column: 3;
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.ranking-feature-info h3 {
+    font-size: clamp(1rem, 1.35vw, 1.3rem);
+    line-height: 1.3;
+    overflow-wrap: break-word;
+    word-break: normal;
+    margin: 8px 0;
+}
+
+.ranking-feature-info p {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    overflow-wrap: break-word;
+}
+
+/* Puestos 2 al 10 */
+
+.ranking-list {
+    width: 100%;
+    min-width: 0;
+}
+
+.ranking-row {
+    display: grid !important;
+    grid-template-columns: 25px 48px minmax(0, 1fr) 15px !important;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 5px;
+    box-sizing: border-box;
+}
+
+.ranking-number {
+    text-align: center;
+}
+
+.ranking-row-image {
+    width: 48px !important;
+    height: 48px !important;
+    object-fit: cover;
+}
+
+.ranking-row-info {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.ranking-row-name {
+    display: block;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.ranking-row-detail {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.ranking-star {
+    text-align: center;
+}
+
+/* Botón */
+
+.ranking-show-more {
+    margin-top: 18px;
+}
+
+/* Explicación */
+
+.music-details .result-explanation {
+    grid-column: 1 / -1;
+}
+
+/* Pantallas medianas */
+
+@media (max-width: 850px) {
+    .music-details {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .music-details .result-explanation {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Celulares */
+
+@media (max-width: 560px) {
+    .music-details {
+        grid-template-columns: 1fr !important;
+    }
+
+    .music-details .result-explanation {
+        grid-column: 1;
+    }
+
+    .ranking-feature {
+        grid-template-columns: 30px 100px minmax(0, 1fr) !important;
+    }
+
+    .ranking-feature-image,
+    .ranking-feature-symbol {
+        width: 100px !important;
+        height: 100px !important;
+    }
+}
+/* Ocultar los puestos 6 al 10 inicialmente */
+.ranking-row-hidden {
+    display: none !important;
+}
+
+/* Mostrar las filas cuando se despliega el ranking */
+.ranking-row-hidden.ranking-row-visible {
+    display: grid !important;
+}
+/* ==========================================
+   AFINIDAD CON LAS OTRAS CASAS
+========================================== */
+
+.other-houses-section {
+    width: min(650px, 90%);
+    margin: 35px auto 45px;
+}
+
+.other-houses-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--house-accent);
+    letter-spacing: 2px;
+}
+
+.other-house {
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.other-house-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 9px;
+    color: var(--cream);
+    font-size: 0.95rem;
+}
+
+.other-house-heading strong {
+    color: var(--house-accent);
+    font-size: 1rem;
+}
+
+.house-bar {
+    width: 100%;
+    height: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(230, 206, 145, 0.35);
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.house-bar-fill {
+    display: block;
+    height: 100%;
+    min-width: 0;
+    border-radius: inherit;
+    transition: width 1.2s ease;
+}
+.floating-artist {
+    position: absolute;
+    width: clamp(48px, 6vw, 82px);
+    height: clamp(48px, 6vw, 82px);
+    object-fit: cover;
+    border-radius: 50%;
+    opacity: 1;
+    z-index: 1;
+    animation: artist-float 5s ease-in-out infinite;
+    animation-delay: calc(var(--artist-index, 0) * -0.7s);
+    pointer-events: none;
+}
+
+.floating-artist-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.analysis-content {
+    position: relative;
+    z-index: 3;
+}
+
+@media (max-width: 600px) {
+    .floating-artist {
+        width: 42px;
+        height: 42px;
+    }
+}
+.other-houses-section {
+    position: relative;
+    z-index: 1;
+    display: block !important;
+    width: min(650px, 90%);
+    max-width: 650px;
+    margin: 35px auto 45px;
+}
+
+.other-houses-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.other-house {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 22px 0 !important;
+}
+
+.other-house-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 9px;
+}
+
+.house-bar {
+    display: block !important;
+    width: 100%;
+}
+
+/* ==========================================
+   AFINIDAD COMPACTA: TRES CASAS EN UNA FILA
+========================================== */
+
+.other-houses-section {
+    display: block !important;
+    width: min(760px, 92%) !important;
+    max-width: 760px !important;
+    margin: 25px auto 30px !important;
+}
+
+.other-houses-title {
+    margin-bottom: 18px !important;
+    font-size: 20px !important;
+    letter-spacing: 2px;
+}
+
+.other-houses-section {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 22px;
+    row-gap: 12px;
+}
+
+.other-houses-title {
+    grid-column: 1 / -1;
+}
+
+.other-house {
+    display: flex !important;
+    align-items: center;
+    gap: 9px;
+    width: 100% !important;
+    margin: 0 !important;
+    min-width: 0;
+}
+
+.other-house-animal {
+    display: block;
+    flex-shrink: 0;
+    font-size: 42px;
+    line-height: 1;
+}
+
+.other-house-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.other-house-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 7px;
+    font-size: 13px !important;
+}
+
+.other-house-name {
+    display: block;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.other-house-heading strong {
+    font-size: 13px !important;
+    white-space: nowrap;
+}
+
+.house-bar {
+    display: block !important;
+    width: 100%;
+    height: 7px !important;
+    border-radius: 20px;
+}
+
+.house-bar-fill {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+}
+
+@media (max-width: 600px) {
+    .other-houses-section {
+        column-gap: 10px;
+    }
+
+    .other-house {
+        gap: 5px;
+    }
+
+    .other-house-animal {
+        font-size: 27px;
+    }
+
+    .other-house-name,
+    .other-house-heading,
+    .other-house-heading strong {
+        font-size: 10px !important;
+    }
+}
