@@ -7,7 +7,7 @@ const home = document.getElementById("home");
 const SPOTIFY_CLIENT_ID = "3ce620f139c44fc89e91d3b925dbc6fd";
 
 const SPOTIFY_REDIRECT_URI =
-    "https://es-d-25391315920261124-01a1e19d-7c39-77f7-9589-ce216aec06c0.codepen.dev/";
+    "https://23kabelen.github.io/hogwarts-sorting-hat-spotify/";
 
 const LASTFM_API_KEY = "e88580827bb5305a91cec4bda4ac1a9e";
 const LASTFM_API_URL = "https://ws.audioscrobbler.com/2.0/";
